@@ -37,9 +37,15 @@ struct ContentView: View {
                     } else {
                         Button(action: {
                             Task {
-                                try? await service.syncPhotos(userId: myId)
-                                try? await service.fetchIntersections(user1: myId, user2: partnerId)
+                                do {
+                                    try await service.syncPhotos(userId: myId)
+                                    try await service.fetchIntersections(user1: myId, user2: partnerId)
+                                } catch {
+                                    print("Sync failed: \(error.localizedDescription)")
+                                    // TODO: Surface error to user via an alert
+                                }
                             }
+                        })
                         }) {
                             Text("Scan & Find Crossings")
                                 .bold()
