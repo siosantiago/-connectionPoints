@@ -2,8 +2,11 @@
 
 import PhotoUploader from '@/components/PhotoUploader';
 import MapVisualizer from '@/components/MapVisualizer';
+import HowToDownload from '@/components/HowToDownload';
+import { useState } from 'react';
 
 export default function Home() {
+  const [isHowToOpen, setIsHowToOpen] = useState(false);
   // Hardcoded test users for the prototype
   // In a real app, you'd use NextAuth/Supabase Auth to login 
   // User 1 = Santiago, User 2 = Girlfriend
@@ -21,6 +24,14 @@ export default function Home() {
         <p className="text-zinc-400 text-lg md:text-xl text-center max-w-2xl font-light">
           Upload your photos to discover the exact moments and places where your histories overlapped before you even knew each other.
         </p>
+
+        <button
+          onClick={() => setIsHowToOpen(true)}
+          className="mt-8 px-6 py-2.5 rounded-full bg-zinc-800 hover:bg-zinc-700 text-zinc-300 hover:text-white font-medium text-sm transition-all border border-zinc-700 shadow-sm flex items-center space-x-2"
+        >
+          <span>How do I get my photos?</span>
+          <span className="flex items-center justify-center w-5 h-5 rounded-full bg-blue-500/20 text-blue-400 text-xs">?</span>
+        </button>
       </div>
 
       <div className="w-full max-w-5xl px-4 space-y-12">
@@ -57,6 +68,7 @@ export default function Home() {
 
       </div>
 
+      <HowToDownload isOpen={isHowToOpen} onClose={() => setIsHowToOpen(false)} />
     </main>
   );
 }
