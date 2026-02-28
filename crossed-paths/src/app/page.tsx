@@ -3,6 +3,7 @@
 import PhotoUploader from '@/components/PhotoUploader';
 import MapVisualizer from '@/components/MapVisualizer';
 import HowToDownload from '@/components/HowToDownload';
+import ScrollingBanner from '@/components/ScrollingBanner';
 import { useState } from 'react';
 
 export default function Home() {
@@ -34,7 +35,9 @@ export default function Home() {
         </button>
       </div>
 
-      <div className="w-full max-w-5xl px-4 space-y-12">
+      <ScrollingBanner />
+
+      <div className="w-full max-w-5xl px-4 space-y-12 mt-12">
 
         {/* Upload Section - Two Users */}
         <section className="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 shadow-2xl space-y-8">
@@ -69,6 +72,6 @@ export default function Home() {
       </div>
 
       <HowToDownload isOpen={isHowToOpen} onClose={() => setIsHowToOpen(false)} />
-    </main>
+    </main >
   );
 }
