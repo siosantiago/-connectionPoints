@@ -29,7 +29,6 @@ export default function PhotoUploader({ userId, onUploadComplete }: { userId: st
                 // This does NOT upload the photo anywhere, strictly reads it locally
                 const exifData = await exifr.parse(file, {
                     gps: true,
-                    DateTimeOriginal: true,
                     pick: ['latitude', 'longitude', 'DateTimeOriginal']
                 });
 
